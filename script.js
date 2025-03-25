@@ -24,5 +24,5 @@ function checkGuess(){
 }
 
 // if text = disabled hover disabled too
-
+//mais um comentário teste pra ver se o commit sobe
 //mantain hover if textbox is clicked   
