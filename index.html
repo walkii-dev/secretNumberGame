@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo do Número Secreto</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header></header>
+    <main class="jogo">
+        <section class="jogo__texto">
+            <h1 class="jogo__texto__titulo">Jogo do Número Secreto</h1>
+            <p class="jogo__texto__subtitulo" id="subtitle">Seja Bem vindo! clique em "Vamos Lá!"</p>
+        </section>
+        <div class="jogo__interacao">
+            <input type="text" class="jogo__interacao__entrada" id="guess" disabled maxlength="1">
+            <a href="#" class="jogo__interacao__botao" id="botao" onclick="startGame(),checkGuess()">Vamos Lá!</a><!-- consertar esse onclick ai-->
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>
