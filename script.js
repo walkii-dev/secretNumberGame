@@ -1,4 +1,4 @@
-let secretNumber = geratorNumberSecret() // define um número aleatório a ser criado 
+let secretNumber = geratorSecretNumber() // define um número aleatório a ser criado 
 let firstExecution = true;
 console.log(secretNumber)
 let attempts = 0
@@ -32,16 +32,15 @@ function checkGuess(){
     let guess = document.getElementById('guess').value;
     if (attempts == 0 && guess == secretNumber){
         useSubtitle("h1","Parabens, acertou de primeira")
-   
+        resetButton()//para regerar um novo nuero secreto.
     }else if (guess == secretNumber){
         useSubtitle("h1","Parabéns, você acertou!");
+        resetButton()//para regerar um novo nuero secreto.
+        
 
     }else if (attempts ==3){
-        useSubtitle("h1","Jogo do Número Secreto")
-        useSubtitle("p","o numero de tentativas foram atingidas")// 3 tentativas
-       guess.disabled = true
-        return guess.value = ""
-
+        limitAttempts()
+        resetButton()//para regerar um novo nuero secreto.
     }else {
         useSubtitle("h1","Eita, você errou!,tente novamente");//alterei o texto adicionando o tente novamente
         document.getElementById('guess').value = ""// com isso toda vez que errar, o numero vai sair.
@@ -49,21 +48,34 @@ function checkGuess(){
         console.log("o numero de tentativas é=",attempts)
     }
 }
-
+function geratorSecretNumber (){
+   let campo= Math.floor(Math.random() * 10) + 1
+    return campo
+}
 
 
 function useSubtitle(tag,text){// para fazer mudanças nos textos basta por a tag e o texto ex: useSubtitle("h1","parabens voce acertou o numero")
     let campo = document.querySelector(tag)
     campo.innerHTML = text
-   
-}
-function geratorNumberSecret(){
-
-    let campo = Math.floor(Math.random() * 10) + 1
-    return campo;
+ 
 }
 
+function limitAttempts (){
+useSubtitle("h1","Jogo do Número Secreto")
+        useSubtitle("p","o numero de tentativas foram atingidas")// 3 tentativas
+       guess.disabled = true
+        return guess.value = ""
 
+}
+function resetButton (){
+    document.querySelector("input").value = ""
+    let nameButton =document.getElementById("botao")
+    nameButton.innerHTML="reiniciar"
+    attempts = 0
+   secretNumber = geratorSecretNumber()
+    console.log(secretNumber)
+    
+}
 
 // if text = disabled hover disabled too
 //mantain hover if textbox is clicked   
